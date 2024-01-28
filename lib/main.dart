@@ -1,5 +1,7 @@
 import 'package:admin_panel/providers/product_provider.dart';
 import 'package:admin_panel/providers/theme_provider.dart';
+import 'package:admin_panel/screens/dashboard_screen.dart';
+import 'package:admin_panel/screens/search_screen.dart';
 import 'package:admin_panel/utils/theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +27,13 @@ class MyApp extends StatelessWidget {
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'ShopSmart',
+          title: 'ShopSmart admin panel',
           theme: Styles.themeData(
               isDarkTheme: themeProvider.getIsDarkTheme, context: context),
-          //  home: const RootScreen(),
+          home: const DashBoardScreen(),
+          routes: {
+            SearchScreen.routeName: (context) => const SearchScreen(),
+          },
         );
       }),
     );

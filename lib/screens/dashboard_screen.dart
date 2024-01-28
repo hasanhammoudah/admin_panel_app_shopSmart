@@ -1,80 +1,33 @@
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:shopsmart_users/providers/product_provider.dart';
-// import 'package:shopsmart_users/screens/widgets/app_bar_widget.dart';
-// import 'package:shopsmart_users/screens/widgets/products/ctg_rounded_widget.dart';
-// import 'package:shopsmart_users/screens/widgets/products/latest_arrival.dart';
-// import 'package:shopsmart_users/screens/widgets/swiper_widget.dart';
-// import 'package:shopsmart_users/screens/widgets/title_text.dart';
-// import 'package:shopsmart_users/utils/app_constants.dart';
+import 'package:admin_panel/models/dashboard_btn_model.dart';
+import 'package:admin_panel/screens/widgets/app_bar_widget.dart';
+import 'package:admin_panel/screens/widgets/dashboard_btns.dart';
+import 'package:admin_panel/screens/widgets/title_text.dart';
+import 'package:flutter/material.dart';
 
-// class HomeScreen extends StatelessWidget {
-//   const HomeScreen({super.key});
+class DashBoardScreen extends StatelessWidget {
+  const DashBoardScreen({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final productProvider = Provider.of<ProductProvider>(context);
-//     Size size = MediaQuery.of(context).size;
-//     return Scaffold(
-//       appBar: const AppBarWidget(
-//         imagePath: "assets/images/bag/shopping_cart.png",
-//         child: TitlesTextWidget(
-//           label: 'Shop smart',
-//           fontSize: 20,
-//         ),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: SingleChildScrollView(
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               const SizedBox(
-//                 height: 15,
-//               ),
-//               SwiperWidget(size: size),
-//               const SizedBox(
-//                 height: 15,
-//               ),
-//               const TitlesTextWidget(
-//                 label: 'Latest arrival',
-//               ),
-//               const SizedBox(
-//                 height: 15,
-//               ),
-//               SizedBox(
-//                 height: size.height * 0.2,
-//                 child: ListView.builder(
-//                     scrollDirection: Axis.horizontal,
-//                     itemCount: productProvider.getProducts.length,
-//                     itemBuilder: (context, index) {
-//                       return ChangeNotifierProvider.value(
-//                         value: productProvider.getProducts[index],
-//                         child: const LatestArrivalProductsWidget(),
-//                       );
-//                     }),
-//               ),
-//               const TitlesTextWidget(
-//                 label: 'Categories',
-//               ),
-//               const SizedBox(
-//                 height: 15,
-//               ),
-//               GridView.count(
-//                 crossAxisCount: 4,
-//                 shrinkWrap: true,
-//                 physics: const NeverScrollableScrollPhysics(),
-//                 children:
-//                     List.generate(AppConstants.categoriesList.length, (index) {
-//                   return CategoryRoundedWidget(
-//                       name: AppConstants.categoriesList[index].name,
-//                       image: AppConstants.categoriesList[index].image);
-//                 }),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const AppBarWidget(
+        imagePath: "assets/images/bag/shopping_cart.png",
+        child: TitlesTextWidget(
+          label: 'Shop smart',
+          fontSize: 20,
+        ),
+      ),
+      body: GridView.count(
+        crossAxisCount: 2,
+        children: List.generate(
+          DashBoardButtonModel.dashboardBtnList(context).length,
+          (index) => DashBoardButtonsWidget(
+            text: DashBoardButtonModel.dashboardBtnList(context)[index].text,
+            imagePath: DashBoardButtonModel.dashboardBtnList(context)[index].imagePath,
+            onPressed: DashBoardButtonModel.dashboardBtnList(context)[index].onPressed,
+          ),
+        ),
+      ),
+    );
+  }
+}
