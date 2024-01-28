@@ -1,3 +1,4 @@
+import 'package:admin_panel/screens/inner_screen/orders_screen.dart';
 import 'package:admin_panel/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,9 @@ class DashBoardButtonModel {
         DashBoardButtonModel(
             text: 'inspect all products',
             imagePath: 'assets/images/bag/order.png',
-            onPressed: () {}),
+            onPressed: () {
+              Navigator.pushNamed(context, OrdersScreenFree.routeName);
+            }),
         DashBoardButtonModel(
             text: 'View Orders',
             imagePath: 'assets/images/bag/order.png',
