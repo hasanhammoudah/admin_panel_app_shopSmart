@@ -323,7 +323,8 @@ class _EditOrUploadProductScreenState extends State<EditOrUploadProductScreen> {
                                 key: const ValueKey('Price \$'),
                                 inputFormatters: <TextInputFormatter>[
                                   FilteringTextInputFormatter.allow(
-                                      RegExp(r'^(\d+)?\.?\d(0,2)')),
+                                    RegExp(r'^(\d+)?\.?\d{0,2}'),
+                                  ),
                                 ],
                                 keyboardType: TextInputType.number,
                                 decoration: const InputDecoration(
