@@ -24,7 +24,7 @@ class _OrdersWidgetFreeState extends State<OrdersWidgetFree> {
             child: FancyShimmerImage(
               height: size.width * 0.25,
               width: size.width * 0.25,
-              imageUrl: 'assets/images/rounded_map.png',
+              imageUrl: 'assets/images/bag/bag_wish.png',
             ),
           ),
           Flexible(

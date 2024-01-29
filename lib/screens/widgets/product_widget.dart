@@ -1,4 +1,5 @@
 import 'package:admin_panel/providers/product_provider.dart';
+import 'package:admin_panel/screens/inner_screen/edit_upload_product_form.dart';
 import 'package:admin_panel/screens/widgets/subtitle_text.dart';
 import 'package:admin_panel/screens/widgets/title_text.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
@@ -27,7 +28,16 @@ class _ProductWidgetState extends State<ProductWidget> {
     return getCurrentProduct == null
         ? const SizedBox.shrink()
         : GestureDetector(
-            onTap: () async {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return EditOrUploadProductScreen(
+                    productModel: getCurrentProduct,
+                  );
+                }),
+              );
+            },
             child: Column(
               children: [
                 ClipRRect(

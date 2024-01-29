@@ -1,3 +1,4 @@
+import 'package:admin_panel/screens/inner_screen/edit_upload_product_form.dart';
 import 'package:admin_panel/screens/inner_screen/orders_screen.dart';
 import 'package:admin_panel/screens/search_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +15,19 @@ class DashBoardButtonModel {
             text: 'Add a new product',
             imagePath: 'assets/images/bag/order.png',
             onPressed: () {
-              Navigator.pushNamed(context, SearchScreen.routeName);
+              Navigator.pushNamed(context, EditOrUploadProductScreen.routeName);
             }),
         DashBoardButtonModel(
             text: 'inspect all products',
             imagePath: 'assets/images/bag/order.png',
             onPressed: () {
-              Navigator.pushNamed(context, OrdersScreenFree.routeName);
+              Navigator.pushNamed(context, SearchScreen.routeName,);
             }),
         DashBoardButtonModel(
             text: 'View Orders',
             imagePath: 'assets/images/bag/order.png',
             onPressed: () {
-              Navigator.pushNamed(context, SearchScreen.routeName);
+              Navigator.pushNamed(context, OrdersScreenFree.routeName);
             }),
       ];
 }

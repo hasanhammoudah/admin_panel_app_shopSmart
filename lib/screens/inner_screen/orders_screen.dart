@@ -24,7 +24,7 @@ class _OrdersScreenFreeState extends State<OrdersScreenFree> {
         ),
         body: isEmptyOrders
             ? const EmptyBagWidget(
-                imagePath: 'assets/images/rounded_map.png',
+                imagePath: 'assets/images/bag/bag_wish.png',
                 title: "No orders has been placed yet",
                 subtitle: "",
                 buttonText: '',
