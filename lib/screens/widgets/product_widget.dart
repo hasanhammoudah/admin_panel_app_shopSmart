@@ -78,7 +78,7 @@ class _ProductWidgetState extends State<ProductWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SubTitleTextWidget(
-                        label: 'r${getCurrentProduct.productPrice}',
+                        label: '${getCurrentProduct.productPrice}\$',
                         color: Colors.blue,
                         fontWeight: FontWeight.w600,
                       ),

@@ -7,7 +7,6 @@ import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
   static const routeName = "/SearchScreen";
@@ -53,12 +52,26 @@ class _SearchScreenState extends State<SearchScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        body: productList.isEmpty
-            ? const Center(
-                child: TitlesTextWidget(
-                label: 'No product found!',
-              ))
-            : Padding(
+        body: StreamBuilder<List<ProductModel>>(
+            stream: productProvider.fetchProductStream(),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  home: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: SelectableText(snapshot.error.toString()),
+                );
+              } else if (snapshot.data == null) {
+                return const Center(
+                  child: SelectableText('No products has been added'),
+                );
+              }
+              return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
@@ -133,7 +146,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ],
                 ),
-              ),
+              );
+            }),
       ),
     );
   }
