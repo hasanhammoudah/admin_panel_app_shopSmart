@@ -14,8 +14,6 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-     // TODO this line not show the leading icon
-      //  automaticallyImplyLeading: false,
       actions: actions,
       centerTitle: centerTitle,
       title: child,
